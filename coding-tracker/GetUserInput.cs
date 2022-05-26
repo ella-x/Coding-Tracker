@@ -1,11 +1,5 @@
-// See https://aka.ms/new-console-template for more information
 using System;
-using System.Configuration;
 using System.Globalization;
-using System.Data;
-using System.IO;
-
-
 
 namespace coding_tracker
 {
@@ -29,33 +23,32 @@ namespace coding_tracker
                 Console.WriteLine("----------------------------------------------------------\n");
                 string commandInput = Console.ReadLine();
                 while (string.IsNullOrEmpty(commandInput))
-                    {
-                        Console.WriteLine("\n         Invalid Command. Please type a number from 0 to 4.");
-                        commandInput = Console.ReadLine();
-                    }    
-
-    
-        switch (commandInput)
-        {
-                    case "0":
-                        closeApp = true;
-                        Environment.Exit(0);
-                        break;
-                    case "1":
-                        codingController.Get();
-                        break;
-                    case "2":
-                        ProcessAdd();
-                        break;
-                    case "3":
-                        ProcessDelete();
-                        break;
-                    case "4":
-                        ProcessUpdate();
-                        break;
-                    default:
-                        Console.WriteLine("\nInvalid Command. Please type a number from 0 to 4.\n");
-                        break;
+                {
+                    Console.WriteLine("\n         Invalid Command. Please type a number from 0 to 4.");
+                    commandInput = Console.ReadLine();
+                }    
+   
+                switch (commandInput)
+                {
+                            case "0":
+                                closeApp = true;
+                                Environment.Exit(0);
+                                break;
+                            case "1":
+                                codingController.Get();
+                                break;
+                            case "2":
+                                ProcessAdd();
+                                break;
+                            case "3":
+                                ProcessDelete();
+                                break;
+                            case "4":
+                                ProcessUpdate();
+                                break;
+                            default:
+                                Console.WriteLine("\nInvalid Command. Please type a number from 0 to 4.\n");
+                                break;
                 }
              }
         }
@@ -94,13 +87,6 @@ namespace coding_tracker
             while (coding.Id == 0)
             {
                 Console.WriteLine("\n Record with id {id} doesn't exist \n");
-                //Console.WriteLine("\n Please add id of the category you want to delete (or 0 to return to Main Menu). \n");   
-               // commandInput = Console.ReadLine();
-
-               // id = Int32.Parse(commandInput);
-               // if (id == 0) MainMenu();
-
-                //coding = codingController.GetById(id);
                 ProcessDelete();
             }
 
@@ -129,7 +115,7 @@ namespace coding_tracker
 
             while (coding.Id == 0)
             {
-                 Console.WriteLine("\n Record with id {id} doesn't exist \n");
+                 Console.WriteLine($"\n Record with id {id} doesn't exist \n");
                  ProcessUpdate();
 
             }
@@ -137,30 +123,34 @@ namespace coding_tracker
             bool updating = true;
             while (updating == true)
             {
-                Console.WriteLine("\n Type 'd' for Date \n");
-                Console.WriteLine("\n Type 't' for Date \n");
-                Console.WriteLine("\n Type 's' for Date \n");
-                Console.WriteLine("\n Type '0' to Go Back to Main Menu \n");
+                Console.WriteLine("$\n Type 'd' for Date \n");
+                Console.WriteLine("$\n Type 't' for Date \n");
+                Console.WriteLine("$\n Type 's' for Date \n");
+                Console.WriteLine("$\n Type '0' to Go Back to Main Menu \n");
                 
-               var updateInput = Console.ReadLine();
+                var updateInput = Console.ReadLine();
 
                 switch (updateInput)
                 {
                     case "d":
                         coding.Date = GetDateInput();
                         break;
+
                     case "t":
                         coding.Duration = GetDurationInput();
                         break;
+
                     case "0":
                         MainMenu();
                         updating = false;
                         break;
+
                     case "s":
                         updating = false;
                         break;
+
                     default:
-                        Console.WriteLine("\n Type '0' to go Back to Main menu.\n");
+                        Console.WriteLine("$\n Type '0' to go Back to Main menu.\n");
                         break;
                 }
             }
@@ -196,13 +186,13 @@ namespace coding_tracker
                durationInput = Console.ReadLine();
                if (durationInput == "0") MainMenu();
             }
-            var parsedDuration = TimeSpan.Parse(durationInput);
-            long date = parsedDuration.Ticks;
-            if(date < 0)
-            {
-               Console.WriteLine("\n\nNegative Time is not allowed .\n\n");
-               GetDurationInput();
-            }
+            //var parsedDuration = TimeSpan.Parse(durationInput);
+            //long date = parsedDuration.Ticks;
+            //if(date < 0)
+            //{
+            //   Console.WriteLine("\n\nNegative Time is not allowed .\n\n");
+            //   GetDurationInput();
+           // }
             return durationInput;
         }
     }

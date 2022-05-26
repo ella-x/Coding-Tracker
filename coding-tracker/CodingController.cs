@@ -1,5 +1,6 @@
 // See https://aka.ms/new-console-template for more information
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using Microsoft.Data.Sqlite;
 
@@ -10,7 +11,7 @@ namespace coding_tracker
     {
         string connectionString = ConfigurationManager.AppSettings.Get("ConnectionString");
        
-       internal void Get()
+       internal List<Coding> Get()
        {
            List<Coding> tableData =  new List<Coding>();
            using (var connection = new SqliteConnection(connectionString)) 
@@ -18,11 +19,12 @@ namespace coding_tracker
                using(var tableCmd = connection.CreateCommand())
                {
                    connection.Open();
-                   tableCmd.CommandText = $"SELECT * FROM coding";
+                   tableCmd.CommandText = "SELECT * FROM coding";
+
                    using (var reader = tableCmd.ExecuteReader())
                    {
-                       if (reader.HasRows())
-                       {
+                        if (reader.HasRows)
+                        {
                            while (reader.Read())
                            {
                                tableData.Add(
@@ -41,11 +43,13 @@ namespace coding_tracker
                     }
                 }
                 Console.WriteLine("\n\n");
-               }
-               TableVisualisation.ShowTable(tableData);
+            }
+
+            TableVisualisation.ShowTable(tableData);
+            return tableData;
         }
 
-        internal void GetById(int id)
+        internal Coding GetById(int id)
         {
            using (var connection = new SqliteConnection(connectionString)) 
             {
@@ -55,28 +59,22 @@ namespace coding_tracker
                    tableCmd.CommandText = $"SELECT * FROM coding Where Id = '{id}'";
                    using (var reader = tableCmd.ExecuteReader())
                    {
-                       if (reader.HasRows())
+                       Coding coding = new();
+
+                       if (reader.HasRows)
                        {
-                           while (reader.Read())
-                           {
-                               tableData.Add(
-                                   new Coding
-                                   {
-                                       Id = reader.GetInt32(0),
-                                       Date = reader.GetString(1),
-                                       Duration = reader.GetString(2)
-                                   }); 
-                           }                            
-                       }
-                       else
-                       {
-                          Console.WriteLine("\n\n No rows found\n\n");
-                       }
-                    }
-                }
-                Console.WriteLine("\n\n");
+                           reader.Read();
+                           coding.Id = reader.GetInt32(0);
+                           coding.Date = reader.GetString(1);
+                            coding.Duration = reader.GetString(2);
+                        }                            
+
+                        Console.WriteLine("\n\n");
+
+                        return coding;
+                   };
+               }
             }
-               TableVisualisation.ShowTable(tableData);
         }
         
 
@@ -84,7 +82,7 @@ namespace coding_tracker
         {
            using (var connection = new SqliteConnection(connectionString)) 
            {
-               using(var tableCmd = connection.CreateCommand)
+               using(var tableCmd = connection.CreateCommand())
                {
                    connection.Open();
                    tableCmd.CommandText = $"INSERT INTO Coding (date, duration) VALUES ('{coding.Date}, {coding.Duration}')";
@@ -116,16 +114,12 @@ namespace coding_tracker
                {
                    connection.Open();
                    tableCmd.CommandText = 
-                   $@"UPDATE coding SET 
-                   Date = '{coding.Date}',
-                   Duration = '{coding.Duration}',
-                   WHERE Id = {coding.Id}";
+                   $@"UPDATE coding SET Date = '{coding.Date}', Duration = '{coding.Duration}', WHERE Id = {coding.Id}";
 
                    tableCmd.ExecuteNonQuery();
-
-                   Console.WriteLine($"\n\n Record with Id {coding.Id} was deleted. \n\n");
                }
             }
+            Console.WriteLine($"\n\n Record with Id {coding.Id} was deleted. \n\n");
         }
     }
 }

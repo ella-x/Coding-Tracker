@@ -1,6 +1,7 @@
 // See https://aka.ms/new-console-template for more information
 using Microsoft.Data.Sqlite;
 
+
 namespace coding_tracker
 {
     internal class DatabaseManager

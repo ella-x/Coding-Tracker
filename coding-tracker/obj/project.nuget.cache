@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lrWfdZHIimI0RxHo1v5v6IAfz+pwOmDeJ/tDi4CaookJ7ynUhg2l/XDjRnOPm92uV5NEFcjykOWF0+yYOASXuQ==",
+  "dgSpecHash": "UcIinnwpPzem4iv7BgpufKO7maJdIa/KhsP7+oGt1BIYF9hKZtrWmH09IgNEDb0s6y6V6Rh1LiQBd1J6++w99w==",
   "success": true,
   "projectFilePath": "C:\\Users\\NRLA\\Desktop\\Coding Tracker\\coding-tracker\\coding-tracker.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\NRLA\\.nuget\\packages\\consoletableext\\3.1.9\\consoletableext.3.1.9.nupkg.sha512",
     "C:\\Users\\NRLA\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.13\\microsoft.data.sqlite.core.5.0.13.nupkg.sha512",
     "C:\\Users\\NRLA\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\NRLA\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
