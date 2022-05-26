@@ -1,0 +1,5 @@
+C:\Users\NRLA\Desktop\Coding Tracker\coding-tracker\obj\Debug\net6.0\coding-tracker.csproj.AssemblyReference.cache
+C:\Users\NRLA\Desktop\Coding Tracker\coding-tracker\obj\Debug\net6.0\coding-tracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NRLA\Desktop\Coding Tracker\coding-tracker\obj\Debug\net6.0\coding-tracker.AssemblyInfoInputs.cache
+C:\Users\NRLA\Desktop\Coding Tracker\coding-tracker\obj\Debug\net6.0\coding-tracker.AssemblyInfo.cs
+C:\Users\NRLA\Desktop\Coding Tracker\coding-tracker\obj\Debug\net6.0\coding-tracker.csproj.CoreCompileInputs.cache
