@@ -69,7 +69,7 @@ namespace coding_tracker
         private void ProcessDelete()
         {
             codingController.Get();
-            Console.WriteLine("Please add id of the category you want to delete (or 0 to return to Main Menu).");
+            Console.WriteLine("Please add id of the record you want to delete (or 0 to return to Main Menu).");
             string commandInput = Console.ReadLine();
 
             while (!Int32.TryParse(commandInput, out _) || string.IsNullOrEmpty(commandInput) || Int32.Parse(commandInput) < 0)
@@ -98,7 +98,7 @@ namespace coding_tracker
         {
             codingController.Get();
 
-             Console.WriteLine("\n");
+             Console.WriteLine("\nPlease add id of the record you want to update (or 0 to return to Main Menu).");
              string commandInput = Console.ReadLine();
 
             while (!Int32.TryParse(commandInput, out _) || string.IsNullOrEmpty(commandInput) || Int32.Parse(commandInput) < 0)
@@ -124,8 +124,8 @@ namespace coding_tracker
             while (updating == true)
             {
                 Console.WriteLine("$\n Type 'd' for Date \n");
-                Console.WriteLine("$\n Type 't' for Date \n");
-                Console.WriteLine("$\n Type 's' for Date \n");
+                Console.WriteLine("$\n Type 't' for Duration \n");
+                Console.WriteLine("$\n Type 's' to save the updated value \n");
                 Console.WriteLine("$\n Type '0' to Go Back to Main Menu \n");
                 
                 var updateInput = Console.ReadLine();
@@ -182,7 +182,7 @@ namespace coding_tracker
            if (durationInput == "0") MainMenu();
            while (!TimeSpan.TryParseExact(durationInput, "h\\:mm", CultureInfo.InvariantCulture, out _))
             {
-               Console.WriteLine("\n\nNot a valid date. Please insert the date with the format: dd-mm-yy.\n\n");
+               Console.WriteLine("\n\nuration invalid. Please insert the duration: (Format: hh:mm) or type 0 to return to main menu.\n\n");
                durationInput = Console.ReadLine();
                if (durationInput == "0") MainMenu();
             }

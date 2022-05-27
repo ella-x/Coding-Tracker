@@ -14,7 +14,7 @@ namespace coding_tracker
                var tableCmd = connection.CreateCommand();
                tableCmd.CommandText = 
                     @"CREATE TABLE IF NOT EXISTS coding (
-                        Id INTEGER PRIMARY KEY AUTOICEMENT,
+                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
                         Date TEXT,
                         Duration TEXT
                     )";

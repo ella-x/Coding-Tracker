@@ -5,7 +5,7 @@
     <RootNamespace>coding_tracker</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="5.0.13"/>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.13"/>
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0"/>
     <PackageReference Include="ConsoleTableExt" Version="3.1.9"/>
   </ItemGroup>

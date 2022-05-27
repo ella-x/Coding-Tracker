@@ -85,7 +85,7 @@ namespace coding_tracker
                using(var tableCmd = connection.CreateCommand())
                {
                    connection.Open();
-                   tableCmd.CommandText = $"INSERT INTO Coding (date, duration) VALUES ('{coding.Date}, {coding.Duration}')";
+                   tableCmd.CommandText = $"INSERT INTO coding (date, duration) VALUES ('{coding.Date}', '{coding.Duration}')";
                    tableCmd.ExecuteNonQuery();
                }
            }
@@ -114,12 +114,12 @@ namespace coding_tracker
                {
                    connection.Open();
                    tableCmd.CommandText = 
-                   $@"UPDATE coding SET Date = '{coding.Date}', Duration = '{coding.Duration}', WHERE Id = {coding.Id}";
+                   $@"UPDATE coding SET Date = '{coding.Date}', Duration = '{coding.Duration}'  WHERE Id = {coding.Id}";
 
                    tableCmd.ExecuteNonQuery();
                }
             }
-            Console.WriteLine($"\n\n Record with Id {coding.Id} was deleted. \n\n");
+            Console.WriteLine($"\n\n Record with Id {coding.Id} was updated. \n\n");
         }
     }
 }
